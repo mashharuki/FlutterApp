@@ -2,6 +2,9 @@
 
 Flutterを学習するためのリポジトリです。
 
+## 構成
+   Flutter + Firebaseで構築されています。
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
