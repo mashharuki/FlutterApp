@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "876479932813",
+    "project_id": "kasikari-memo-dde03",
+    "storage_bucket": "kasikari-memo-dde03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876479932813:android:f0e5aa7cb8e75cad9775c4",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876479932813-kqmgcp2b13cfg8hoso2itqu12r9lfn04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_yukCNM2n7uCpfjOiq_7QQ8lO8Rpe6UA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876479932813-kqmgcp2b13cfg8hoso2itqu12r9lfn04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
