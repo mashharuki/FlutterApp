@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'input_form.dart';
 
 /**
  * Listクラス
@@ -41,6 +42,19 @@ class _MyList extends State<List> {
           },
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          print("新規作成ボタンが押されました。");
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                settings: const RouteSettings(name: "/new"),
+                builder: (BuildContext context) => InputForm()
+              ),
+          );
+        }
+      ),
     );
   }
 
@@ -63,6 +77,19 @@ class _MyList extends State<List> {
             leading: const Icon(Icons.android),
             title: Text("【$borrowOrLend】: ${document['stuff']}"),
             subtitle: Text("期限：$limitDate¥n 相手：${document['user']}"),
+          ),
+          ButtonBarTheme(
+            data: ButtonBarThemeData(buttonTextTheme: ButtonTextTheme.accent),
+            child: ButtonBar(
+              children: <Widget>[
+                TextButton(
+                    onPressed: () {
+                      print("編集ボタンを押しました。");
+                    },
+                    child: const Text("編集")
+                ),
+              ],
+            )
           ),
         ]
       ),

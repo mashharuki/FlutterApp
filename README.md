@@ -4,6 +4,12 @@ Flutterを学習するためのリポジトリです。
 
 ## 構成
    Flutter + Firebaseで構築されています。
+   
+### StatefulWidget
+    初期設定画面
+
+### StatelessWidget
+    表示が変化する画面
 
 ## Getting Started
 
