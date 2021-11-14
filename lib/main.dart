@@ -5,6 +5,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'list.dart';
+import 'initialize.dart';
+import 'splash.dart';
 
 // main関数
 Future<void> main() async {
@@ -28,7 +30,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: List(),
+      routes: <String, WidgetBuilder>{
+        '/': (BuildContext context) => Initialize(),
+        'list': (BuildContext context) => List(),
+        '/splash': (BuildContext context) => Splash()
+      }
     );
   }
 }

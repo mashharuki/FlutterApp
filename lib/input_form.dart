@@ -6,6 +6,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'promise_model.dart';
+import 'user_auth.dart';
 
 /**
  * InputFormクラス
@@ -52,7 +53,11 @@ class _MyInputFormState extends State<InputForm> {
   // 入力画面の構成
   Widget build(BuildContext context) {
     // promiseテーブルからデータを取得する。
-    DocumentReference _mainReference = FirebaseFirestore.instance.collection('promises').doc();
+    DocumentReference _mainReference = FirebaseFirestore.instance
+        .collection('users').doc(userAuth.currentUser!.uid)
+        .collection('promises').doc();
+    // 削除用のフラグ
+    bool isDeletedDocument = false;
     // 編集データの作成
     if (widget.document != null) {
       // 日付・貸し借り情報更新時に、再buildされるため、値が更新されるのを防ぐ。
@@ -63,7 +68,10 @@ class _MyInputFormState extends State<InputForm> {
         _promise.date = widget.document!['date'].toDate();
       }
       // IDに合致するデータを取得する。
-      _mainReference = FirebaseFirestore.instance.collection('promises').doc(widget.document!.id);
+      _mainReference = FirebaseFirestore.instance
+          .collection('users').doc(userAuth.currentUser!.uid)
+          .collection('promises').doc(widget.document!.id);
+      isDeletedDocument = true;
     }
 
     return Scaffold(
@@ -91,7 +99,13 @@ class _MyInputFormState extends State<InputForm> {
           ),
           IconButton(
               onPressed: () {
-                print("削除ボタンが押されました。");
+                if (isDeletedDocument) {
+                  print("削除ボタンが押されました。");
+                  _mainReference.delete();
+                  Navigator.pop(context);
+                } else {
+                  return null;
+                }
               },
               icon: Icon(Icons.delete)
           ),
