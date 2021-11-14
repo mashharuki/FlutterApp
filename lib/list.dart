@@ -7,6 +7,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'generated/l10n.dart';
 import 'input_form.dart';
 import 'user_auth.dart';
 
@@ -27,7 +28,7 @@ class _MyList extends State<List> {
   Widget build(BuildContext context) {
     return Scaffold (
       appBar: AppBar(
-        title: const Text("貸し借りメモ"),
+        title: Text(S.of(context).title),
         actions: <Widget>[
           IconButton(
               onPressed: () {
