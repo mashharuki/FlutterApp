@@ -30,7 +30,7 @@ class _MyList extends State<List> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: StreamBuilder<QuerySnapshot>(
-          stream: FirebaseFirestore.instance.collection('promise').snapshots(),
+          stream: FirebaseFirestore.instance.collection('promises').snapshots(),
           builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
             if (snapshot.data?.docs.length == 0) return Center(child: Text("データが登録されていません"));
@@ -50,7 +50,7 @@ class _MyList extends State<List> {
               context,
               MaterialPageRoute(
                 settings: const RouteSettings(name: "/new"),
-                builder: (BuildContext context) => InputForm()
+                builder: (BuildContext context) => InputForm(null)
               ),
           );
         }
@@ -85,6 +85,14 @@ class _MyList extends State<List> {
                 TextButton(
                     onPressed: () {
                       print("編集ボタンを押しました。");
+                      // 画面遷移する。
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              settings: const RouteSettings(name: "/edit"),
+                              builder: (BuildContext context) => InputForm(document)
+                          ),
+                      );
                     },
                     child: const Text("編集")
                 ),
