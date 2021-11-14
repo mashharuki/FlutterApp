@@ -5,6 +5,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:share/share.dart';
 import 'promise_model.dart';
 import 'user_auth.dart';
 
@@ -108,6 +109,20 @@ class _MyInputFormState extends State<InputForm> {
                 }
               },
               icon: Icon(Icons.delete)
+          ),
+          IconButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  String _borrowOrLend = _promise.borrowOrLend == "lend" ? "貸" : "借";
+                  Share.share(
+                    "【$_borrowOrLend】${_promise.stuff}¥n"
+                    "期限：${_promise.date.toString().substring(0, 10)}¥n"
+                    "相手：${_promise.user}¥n"
+                    "#貸し借りメモ"
+                  );
+                }
+              },
+              icon: Icon(Icons.share)
           ),
         ],
       ),

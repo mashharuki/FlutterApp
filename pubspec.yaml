@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth: 1.4.1
   fluttertoast: 8.0.7
+  share: 2.0.4
 dev_dependencies:
   flutter_test:
     sdk: flutter
